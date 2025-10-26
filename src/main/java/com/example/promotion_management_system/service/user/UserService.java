@@ -115,27 +115,7 @@ public class UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new PromotionManagementSystemException("User not found", HttpStatus.BAD_REQUEST.value()));
 
-        if (updatedUser.getUsername() != null && !updatedUser.getUsername().isEmpty()) {
-            user.setUsername(updatedUser.getUsername());
-        }
-        if (updatedUser.getPassword() != null && !updatedUser.getPassword().isEmpty()) {
-            user.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
-        }
-        if (updatedUser.getRole() != null && !updatedUser.getRole().isEmpty()) {
-            user.setRole(updatedUser.getRole());
-        }
-        if (updatedUser.getFirstName() != null && !updatedUser.getFirstName().isEmpty()) {
-            user.setFirstName(updatedUser.getFirstName());
-        }
-        if (updatedUser.getLastName() != null && !updatedUser.getLastName().isEmpty()) {
-            user.setLastName(updatedUser.getLastName());
-        }
-        if (updatedUser.getEmail() != null && !updatedUser.getEmail().isEmpty()) {
-            user.setEmail(updatedUser.getEmail());
-        }
-        if (updatedUser.getPhoneNumber() != null && !updatedUser.getPhoneNumber().isEmpty()) {
-            user.setPhoneNumber(updatedUser.getPhoneNumber());
-        }
+        UserMapper.updateUserFields(user, updatedUser, passwordEncoder);
 
         User updatedUserDetails = userRepository.save(user);
 
