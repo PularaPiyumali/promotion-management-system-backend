@@ -24,7 +24,7 @@ public class AdminController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public UserResponseDTO createUser(@Valid @RequestBody UserRequestDTO userDTO) {
-        logger.info("Starting to create user: {}", userDTO);
+        logger.info("Starting to create user: {}",userDTO);
         UserResponseDTO response = userService.register(userDTO);
         return response;
     }
