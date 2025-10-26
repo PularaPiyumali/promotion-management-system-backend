@@ -43,7 +43,7 @@ A Spring Boot backend application providing REST APIs to manage promotions, user
    
 4. Build and run the application.
 
-API Endpoints
+### API Endpoints
 
 UserController (/users/login) – Public
 
