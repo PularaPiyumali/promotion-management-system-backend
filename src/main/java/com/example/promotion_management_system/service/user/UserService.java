@@ -4,7 +4,6 @@ import com.example.promotion_management_system.model.user.UserLoginRequestDTO;
 import com.example.promotion_management_system.model.user.UserLoginResponseDTO;
 import com.example.promotion_management_system.model.user.UserRequestDTO;
 import com.example.promotion_management_system.model.user.UserResponseDTO;
-import jakarta.transaction.Transactional;
 
 import java.util.List;
 
@@ -19,7 +18,6 @@ public interface UserService {
      * @param userDTO the user dto
      * @return the user response dto
      */
-    @Transactional
     UserResponseDTO register(UserRequestDTO userDTO);
 
     /**
@@ -37,7 +35,6 @@ public interface UserService {
      * @param updatedUser the updated user
      * @return the user response dto
      */
-    @Transactional
     UserResponseDTO updateUser(Long id, UserRequestDTO updatedUser);
 
     /**

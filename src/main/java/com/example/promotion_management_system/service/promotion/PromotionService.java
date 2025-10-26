@@ -2,7 +2,6 @@ package com.example.promotion_management_system.service.promotion;
 
 import com.example.promotion_management_system.model.promotion.PromotionRequestDTO;
 import com.example.promotion_management_system.model.promotion.PromotionResponseDTO;
-import jakarta.transaction.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -27,7 +26,6 @@ public interface PromotionService {
      * @return the promotion response dto
      * @throws IOException the io exception
      */
-    @Transactional
     PromotionResponseDTO updatePromotion(Long id, PromotionRequestDTO dto) throws IOException;
 
     /**
