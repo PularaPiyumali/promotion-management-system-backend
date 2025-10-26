@@ -4,6 +4,7 @@ import com.example.promotion_management_system.domain.user.User;
 import com.example.promotion_management_system.model.user.UserRequestDTO;
 import com.example.promotion_management_system.model.user.UserResponseDTO;
 import com.example.promotion_management_system.model.user.UserRole;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -75,6 +76,37 @@ public class UserMapper {
         });
 
         return userResponseDTOS;
+    }
+
+    /**
+     * Update user fields.
+     *
+     * @param existingUser    the existing user
+     * @param dto             the dto
+     * @param passwordEncoder the password encoder
+     */
+    public static void updateUserFields(User existingUser, UserRequestDTO dto, PasswordEncoder passwordEncoder) {
+        if (dto.getUsername() != null) {
+            existingUser.setUsername(dto.getUsername());
+        }
+        if (dto.getPassword() != null) {
+            existingUser.setPassword(passwordEncoder.encode(dto.getPassword()));
+        }
+        if (dto.getRole() != null) {
+            existingUser.setRole(dto.getRole());
+        }
+        if (dto.getFirstName() != null) {
+            existingUser.setFirstName(dto.getFirstName());
+        }
+        if (dto.getLastName() != null) {
+            existingUser.setLastName(dto.getLastName());
+        }
+        if (dto.getEmail() != null) {
+            existingUser.setEmail(dto.getEmail());
+        }
+        if (dto.getPhoneNumber() != null) {
+            existingUser.setPhoneNumber(dto.getPhoneNumber());
+        }
     }
 
 }
